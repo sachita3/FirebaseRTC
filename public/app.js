@@ -60,18 +60,18 @@ if (window.localStorage.getItem('interviewer') == 0) {
 }
 
 async function makeRoom() {
-  var rand = random(KEY_SIZE);
-  function random(length) {
-    var result = '';
-    var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    var charactersLength = characters.length;
-    for (var i = 0; i < length; i++) {
-        result += characters.charAt(Math.floor(Math.random() * charactersLength));
-    }
-    return (result);
-  }
-  const roomId = rand;
-  console.log(roomId, 'roomID');
+  // var rand = random(KEY_SIZE);
+  // function random(length) {
+  //   var result = '';
+  //   var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  //   var charactersLength = characters.length;
+  //   for (var i = 0; i < length; i++) {
+  //       result += characters.charAt(Math.floor(Math.random() * charactersLength));
+  //   }
+  //   return (result);
+  // }
+  // const roomId = rand;
+  // console.log(roomId, 'roomID');
 
   await openUserMedia();
   const querystring = window.location.search;
@@ -79,8 +79,8 @@ async function makeRoom() {
 
   const urlParams = new URLSearchParams(querystring);
 
- // const roomId = urlParams.get("key");
-  // roomId = window.localStorage.getItem('roomId')
+ const roomId = urlParams.get("key");
+   roomId = window.localStorage.getItem('roomId')
   console.log(roomId);
   var boardLink = "https://morning-beyond-53957.herokuapp.com/?key=" + roomId;
   document.getElementById("board").setAttribute("src", boardLink);
@@ -133,7 +133,7 @@ async function createRoomById() {
 
   const urlParams = new URLSearchParams(querystring);
 
-  //const roomId = urlParams.get("key");
+  const roomId = urlParams.get("key");
   launchlab(roomId);
   const roomRef = await db.collection("rooms").doc(roomId);
 
@@ -328,7 +328,7 @@ async function hangUp(e) {
 
   const urlParams = new URLSearchParams(querystring);
 
- // const roomId = urlParams.get("key");
+ const roomId = urlParams.get("key");
   console.log(roomId);
   if (roomId) {
       const db = firebase.firestore();
