@@ -1,5 +1,6 @@
 {
   "projects": {
-    "default": "fir-rtc-5d632"
+    "default": "fir-rtc-5d632",
+    "teams": "fir-rtc-5d632"
   }
 }
